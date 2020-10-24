@@ -1,0 +1,740 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  scroll-behavior: smooth;
+}
+
+html{
+  font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+a{
+  text-decoration: none;
+}
+.container{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* header Section */
+#header{
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: auto;
+}
+#header .header{
+  min-height: 8vh;
+  background-color: rgba(31, 30, 30, 0.24);
+  transition: .3s ease backgroundColor;
+}
+#header .nav-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1300px;
+  padding: 0 10px;
+}
+#header .nav-bar .brand a{
+  font-family: 'Yellowtail', cursive;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 2px black;
+  color: white;
+}
+
+#header .nav-lists ul{
+  list-style: none;
+  position: absolute;
+  background-color: rgb(31, 30, 30);
+  width: 100vw;
+  height: 100vh;
+  left: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: .4s ease left;
+}
+#header .nav-lists ul.active{
+  left: 0;
+}
+#header .nav-lists ul a{
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: .2rem;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px;
+  display: block;
+}
+#header .nav-lists ul a::after{
+  content: attr(data-after);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: rgba(240, 248, 255, 0.021);
+  font-size: 8rem;
+  letter-spacing: 50px;
+  z-index: -1;
+  transition: .3s ease letter-spacing;
+}
+#header .nav-lists ul li:hover a::after{
+  transform: translate(-50%, -50%) scale(1);
+  letter-spacing: initial;
+}
+#header .nav-lists ul li:hover a{
+  color: crimson;
+}
+#header .hamburger{
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  transform: scale(.8);
+  margin-right: 20px;
+}
+#header .hamburger:after{
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid white;
+  animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar{
+  height: 2px;
+  width: 30px;
+  position: relative;
+  background-color: white;
+  z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: white;
+  transition: .3s ease;
+  transition-property: top, bottom;
+}
+#header .hamburger .bar::after{
+  top: 8px;
+}
+#header .hamburger .bar::before{
+  bottom: 8px;
+}
+#header .hamburger.active .bar::before{
+  bottom: 0;
+}
+#header .hamburger.active .bar::after{
+  top: 0;
+}
+/* End Header Section */
+/* Home Section */
+#home{
+  background-image: url(../img/header.jpg);
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+  z-index: 1;
+  }
+#home::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: .7;
+  z-index: -1;
+}
+#home .home{
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 50px;
+  justify-content: flex-start;
+}
+
+#home h1{
+  display: block;
+  width: fit-content;
+  font-size: 3rem;
+  position: relative;
+  color: transparent;
+  animation: caja_presentacion .5s ease forwards;
+  animation-delay: 1s;
+}
+.color{
+  color: crimson;
+}
+#home h1:nth-child(1){
+  animation-delay: 1s;
+}
+#home h1:nth-child(2){
+  animation-delay: 2s;
+}
+#home h1:nth-child(3){
+  animation-delay: 3s;
+}
+#home h1 span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: crimson;
+  animation: caja_presentacion_titulo 1s ease;
+  animation-delay: .5s;
+}
+#home h1:nth-child(1) span{
+  animation-delay: .5s;
+}
+#home h1:nth-child(2) span{
+  animation-delay: 1.5s;
+}
+#home h1:nth-child(3) span{
+  animation-delay: 2.5s;
+}
+#home .cto{
+  display: inline-block;
+  padding: 10px 30px;
+  color: crimson;
+  background-color: transparent;
+  border: 2px solid crimson;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  margin-top: 30px;
+  transition: .2s ease background-color;
+}
+#home .cto:hover{
+  color: white;
+  background-color: crimson;
+
+}
+/* End Home Section */
+/* Aventura Section */
+#aventura .aventura {
+  flex-direction: column;
+  text-align: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 100px 0;
+  width: 70%;
+}
+#aventura .subtitulo, .caja-llegar .subtitulo,
+.galeria .subtitulo, .destinos-subtitulo .subtitulo,
+.formulario .subtitulo{
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: black;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  text-align: center;
+}
+.subtitulo2{
+  font-size: 1.8rem;
+  text-align: justify;
+  color: black;
+}
+
+#aventura .aventura p, .caja-llegar .texto{
+  font-size: 1.2rem;
+  margin-top: 5px;
+  line-height: 2.5rem;
+  font-weight: 300;
+  letter-spacing: .05rem;
+  text-align: justify;
+  text-indent: 50px;
+}
+#aventura .aventura .column-center{
+  padding-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#aventura .aventura .column-center .imagen{
+  width: 100%;
+}
+#aventura .aventura .column-center .imagen img{
+  width: calc(100% - 10px);
+}
+
+
+/* End Aventura Section */
+
+/* Separador Section */
+.separador{
+  width: 100%;
+  height: 250px;
+  background-image: linear-gradient(to right, rgba(68, 68, 68, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%), url(../img/separador.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+.separador p{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: 'Dancing Script', cursive;
+  padding: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 2px black;
+  animation: moverAbajo 1s ease-in;
+}
+/* End separador Section */
+/* como llegar Section */
+.caja-llegar{
+  width: 70%;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+/* End como llegar Section */
+/* Gallery Section */
+#galeria{
+  background: #d5d5d5;
+  padding: 5rem 5rem;
+}
+
+.contenedor-galeria{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.img-galeria{
+  object-fit: cover;
+  width: 100%;
+  height: 180px;
+  display: block;
+  margin-bottom: 15px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.imagen-light{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(100%);
+  transition: transform .2s ease-in-out;
+ }}
+.imagen-light .agregar-imagen{
+  width: 100%;
+  /* width: 50%; */
+  display: block;
+  margin: auto;
+  max-width: 700px;
+  object-fit: cover;
+  transform: scale(0);
+  transition: transform .3s .2s
+}
+.show{
+  transform: translate(0);
+}
+.showImage{
+  transform: scale(1);
+}
+.close{
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  width: 40px;
+  cursor: pointer;
+}
+/* End gallery Section */
+/* Destinos Section */
+#destinos{
+  flex-direction: column;
+  min-height: 60vh;
+  padding: 5rem 5rem;
+}
+#destinos .destinos-subtitulo{
+  width: 100%;
+  text-align: center;
+}
+#destinos .destinos-info{
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+#destinos .destinos-info .destinos{
+  width: 100%;
+  min-height: 200px;
+  position: relative;
+  transition: .3s ease transform;
+  margin: 5px;
+}
+#destinos .destinos-info .destinos .destinos-card{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: .3s ease transform;
+  display: block;
+}
+#destinos .destinos-info .destinos .destinos-card .destinos-front,
+#destinos .destinos-info .destinos .destinos-card .destinos-back{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #4f5252;
+  padding: 10px;
+}
+#destinos .destinos-info .destinos .destinos-card .destinos-back{
+  transform: rotateY(180deg);
+}
+#destinos .destinos-info .destinos .destinos-card .destinos-front h3{
+  font-size: 2.5rem;
+  text-transform: capitalize;
+
+}
+#destinos .destinos-info .destinos:hover .destinos-card{
+  transform: rotateY(180deg);
+}
+#destinos .destinos-info .destinos .destinos-card .destinos-back p{
+  font-size: 2rem;
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+}
+#destinos .destinos-info .destinos:nth-child(1) .destinos-card .destinos-front{
+  background-image: url(../img/Laguna-San-Rafael.jpg);
+  background-size: cover;
+  position: relative;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+#destinos .destinos-info .destinos:nth-child(2) .destinos-card .destinos-front{
+  background-image: url(../img/Coyhaique-Aysen.jpg);
+  background-size: cover;
+  position: relative;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+#destinos .destinos-info .destinos:nth-child(3) .destinos-card .destinos-front{
+  background-image: url(../img/Lago-General-Carrera.jpg);
+  background-size: cover;
+  position: relative;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+}
+#destinos .destinos-info .destinos:nth-child(1) .destinos-card .destinos-front::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#destinos .destinos-info .destinos:nth-child(2) .destinos-card .destinos-front::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#destinos .destinos-info .destinos:nth-child(3) .destinos-card .destinos-front::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+/* End destinos Section */
+/* Contactanos Section */
+.formulario{
+max-width: 1000px;
+margin-left: auto;
+margin-right: auto;
+padding: 1.5rem;
+}
+.formulario .contact-wrapper{
+  box-shadow: 0 0 20px black;
+  color: white;
+  font-size: 1.5rem;
+}
+.formulario .contact-wrapper > *{
+  padding: 1rem;
+}
+.formulario .contact-wrapper .contact-form{
+  background: #222222;
+
+}
+.formulario .contact-wrapper .contact-form form{
+  margin: 0;
+  padding: 1rem;
+}
+
+
+.formulario .contact-wrapper .contact-form form button,
+.formulario .contact-wrapper .contact-form form input,
+.formulario .contact-wrapper .contact-form form textarea{
+  width: 100%;
+  padding: .7rem;
+  border: none;
+  background: none;
+  outline: 0;
+  color: white;
+  border-bottom: 1px solid crimson;
+}
+.formulario .contact-wrapper .contact-form form button{
+  background: crimson;
+  border: 0;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+.formulario .contact-wrapper .contact-form form button:hover,
+.formulario .contact-wrapper .contact-form form button:focus{
+  background: #f72f2f;
+  outline: 0;
+}
+.formulario .contact-wrapper .contact-info{
+  background: black;
+}
+.formulario .contact-wrapper .contact-info .texto1{
+  text-align: center;
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem
+}
+/* End contactanos Section */
+/* Footer Section */
+footer{
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+  padding-bottom: 0.1px;
+}
+
+.footer-content{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+
+.contact-us{
+  width: 40%;
+  color: crimson;
+}
+
+.contact-us img{
+  width: 65%;
+  border-style: solid;
+}
+
+.social-media{
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.social-media-icon{
+  display: inline-block;
+  margin-left: 20px;
+  width: 60px;
+  height: 60px;
+  border: 1px solid crimson;
+  border-radius: 50%;
+  text-align: center;
+  color: crimson;
+}
+
+.social-media-icon:hover{
+  background: crimson;
+  color: white;
+}
+
+.social-media-icon i{
+  font-size: 30px;
+  line-height: 60px;
+}
+
+.line{
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 2px;
+  background: crimson;
+  margin-bottom: 60px;
+}
+
+.copyright {
+			letter-spacing: 0.2rem;
+			font-size: 0.6rem;
+			margin-bottom: 0;
+			text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 20px;
+      color: crimson;
+		}
+/* End footer Section */
+
+/* Keyframes */
+@keyframes hamburger_puls{
+  0%{
+    opacity: 1;
+    transform: scale(1);
+  }
+  100%{
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes caja_presentacion_titulo {
+  50%{
+    width: 100%;
+    left: 0;
+  }
+  100%{
+    width: 0;
+    left: 100%;
+  }
+}
+@keyframes caja_presentacion {
+  100%{
+    color: white;
+  }
+}
+
+/* End keyframes */
+
+/* Pantallas grandes */
+@media only screen and (min-width:1400px){
+  #header .hamburger{
+    display: none;
+  }
+  #header .nav-lists ul{
+    position: initial;
+    display: block;
+    height: auto;
+    width: 100%;
+    background-color: transparent;
+
+  }
+  #header .nav-lists ul li{
+    display: inline-block;
+  }
+  #header .nav-lists ul li a{
+    font-size: 1.8rem;
+  }
+  #header .nav-lists ul a:after{
+    display: none;
+  }
+  #home h1{
+    font-size: 5rem;
+  }
+  #home .cto{
+  font-size: 2rem;
+  }
+}
+
+@media only screen and (min-width:600px){
+  #aventura .subtitulo, .caja-llegar .subtitulo,
+  .galeria .subtitulo, .destinos-subtitulo .subtitulo,
+  .formulario .subtitulo{
+   font-size: 4rem;
+  }
+  #aventura .aventura p, .caja-llegar .texto{
+  font-size: 1.8rem;
+  }
+  #aventura .aventura .column-center{
+   display: flex;
+  }
+  #aventura .aventura .column-center .imagen{
+    width: 300px;
+
+  }
+  #aventura .aventura .column-center .imagen img{
+    width: 300px;
+    padding: 10px 30px;
+  }
+  .img-galeria{
+    width: 30%;
+  }
+  .imagen-light .agregar-imagen{
+   width: 50%;
+  }
+  #destinos .destinos-info{
+    flex-direction: row;
+  }
+  #destinos .destinos-info .destinos{
+    min-height: 280px;
+  }
+  .formulario{
+    padding-bottom: 100px;
+  }
+  .contact-wrapper{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  .contact-wrapper > * {
+    padding: 2rem;
+  }
+  .contact-us{
+    width: 20%;
+    color: crimson;
+  }
+}
